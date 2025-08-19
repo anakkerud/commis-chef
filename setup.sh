@@ -6,4 +6,10 @@ if [[ "$OSTYPE" != "linux-gnu"* && "$OSTYPE" != "darwin"* ]]; then
   exit 1
 fi
 
-echo "System is Unix-based. Proceeding with the script..."
+echo -e "Installing uv ..."
+if curl -LsSf https://astral.sh/uv/install.sh | sh > /dev/null 2>&1; then
+  echo -e "\033[0;32m+ uv installed\033[0m"
+else
+  echo -e "\033[0;31mFailed to install uv\033[0m"
+  exit 1
+fi
